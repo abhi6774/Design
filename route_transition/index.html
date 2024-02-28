@@ -1,0 +1,121 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Transition</title>
+    <style>
+        :root {
+            --background-color: #ecf0f3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background-color);
+        }
+
+        main {
+            background-color: var(--background-color);
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div {
+            width: 300px;
+            height: auto;
+            background: pink;
+            border-radius: 12px;
+            padding: 20px;
+            /* transition: all 0.3s ease-in-out; */
+        }
+
+        #pages {
+            width: 100%;
+            height: 0px;
+            transition: all 1s;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <div class="card-container" id="nav-container">
+            <div id="pages">
+
+            </div>
+
+            <nav>
+                <a href="page1" class="page-nav">Page 1</a>
+                <a href="page2" class="page-nav">Page 2</a>
+            </nav>
+        </div>
+    </main>
+    <script>
+        const navPagesContainer = document.getElementById('pages');
+
+        const cardComponent = (title, description, width, height) => {
+            return `
+            <div class="card" style="width:${width}; height${height}">
+                <h1>${title}</h1>
+                <p>${description}</p>
+            </div>
+            `
+        }
+
+        const card1 = cardComponent('Page 1', 'This is a Card Component', '100%', '200px');
+        const card2 = cardComponent('Page 2', 'This is a Card Component', '100%', '300px');
+
+        /**
+         * @type {HTMLAnchorElement} pageNav
+         */
+        const pageNav = document.getElementsByClassName('page-nav');
+        Array.from(pageNav).map((ele) => ele.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.history.pushState({}, '', e.target.href);
+            if (e.target.href.includes('page1')) {
+                navPagesContainer.innerHTML = card1;
+                navPagesContainer.style.height = '200px';
+            } else if (e.target.href.includes('page2')) {
+                navPagesContainer.innerHTML = card2;
+                navPagesContainer.style.height = '300px';
+            } else {
+                navPagesContainer.innerHTML = ``;
+                navPagesContainer.style.height = '0px';
+            }
+        }));
+
+        window.addEventListener('popstate', (e) => {
+            if (!/(page1|page2)/.test(window.location.href)) {
+                navPagesContainer.innerHTML = ``
+                navPagesContainer.style.height = '0px';
+            }
+        })
+        window.addEventListener('pushstate', (e) => {
+            if (e.target.href.includes('page1')) {
+                navPagesContainer.innerHTML = card1;
+                navPagesContainer.style.height = '200px';
+            } else if (e.target.href.includes('page2')) {
+                navPagesContainer.innerHTML = card2;
+                navPagesContainer.style.height = '300px';
+            } else {
+                navPagesContainer.innerHTML = ``;
+                navPagesContainer.style.height = '0px';
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>

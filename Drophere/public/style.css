@@ -1,0 +1,69 @@
+:root {
+  --background-color: rgb(248, 246, 246);
+}
+* {
+  padding: 0%;
+  margin: 0%;
+  font-family: sans-serif;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#dropfield {
+  min-width: 400px;
+  width: 40%;
+  height: 300px;
+  background: rgb(233, 234, 228);
+  border-radius: 10px;
+  border: 8px solid rgba(0, 0, 0, 0.336);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+#dropfield span.view {
+  font-size: 2em;
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+#dropfield.over {
+  opacity: 0.9;
+  background: rgb(153, 221, 217);
+}
+
+#file {
+  display: none;
+}
+
+.link {
+  position: absolute;
+  top: 5%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.link a {
+  text-decoration: none;
+  font-size: 1.5em;
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid pink;
+  border-radius: 10px;
+  background-color: rgb(141, 135, 213);
+  color: white;
+}

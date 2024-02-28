@@ -1,0 +1,12 @@
+/* Typescript Configuration */
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "lib": ["dom", "ESNext"],
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  }
+}

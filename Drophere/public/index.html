@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drophere</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+      <div class="link"><a href="/filelist.html">Filelist</a></div>
+      <div id="dropfield" dropzone>
+        <span class="view">Drophere to Share</span>
+      </div>
+      <input type="file" id="file" multiple>
+    </div>
+    <script src="./script.js"></script>
+    <script>
+      dropfield.onclick = (ev) => { ev.preventDefault(); fileInput.click();};
+      fileInput.onchange = (ev) => {
+        if (ev.target.files.length == 0) return;
+        uploadfile(ev.target.files);
+      }
+
+      function uploadfile(files) {
+        Array.from(files).forEach( async file => {
+          const filename = file.name;
+          console.log(filename);
+          // console.log(file.stream())
+          const response = await fetch(`/share?f=${filename}`, {
+            method: "post",
+            body: file
+          })
+        });
+      }
+    </script>
+</body>
+</html>

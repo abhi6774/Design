@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courgette', cursive;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #eee;
+    gap: 30px;
+}
+
+.drop {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /* background: #ccc; */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    text-shadow: -2px -2px 5px #fff;
+    filter: drop-shadow(4px 4px 10px #fff);
+    box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05), 15px 25px 10px rgba(0, 0, 0, 0.05),
+    15px 20px 20px rgba(0, 0, 0, 0.05), inset -10px -10px 15px rgba(255, 255, 255, 0.05);
+}
+
+.drop::before {
+    content: '';
+    position: absolute;
+    top: 35px;
+    left: 25px;
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    filter: blur(2px);
+}
+
+.drop::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 55px;
+    background: #fff;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    filter: blur(2px);
+}
+.drop span {
+    font-size: 3em;
+}
+
+ion-icon[name="heart"] {
+    color: #ff5353;
+    font-size: 2em;
+    margin-top: 20px;
+}
